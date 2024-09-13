@@ -7,6 +7,7 @@ const index = () => {
     <SafeAreaView>
       <View>
         <Text>Landing Page</Text>
+        <Link href="/sign-in">Go to sign in</Link>
       </View>
     </SafeAreaView>
   )

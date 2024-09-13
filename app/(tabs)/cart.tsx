@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
-const Explore = () => {
+const Cart = () => {
   return (
     <View>
-      <Text> Explore</Text>
+      <Text>Cart</Text>
     </View>
   )
 }
-export default Explore
+export default Cart

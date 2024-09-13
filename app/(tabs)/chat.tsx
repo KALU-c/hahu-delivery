@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
-const Explore = () => {
+const Chat = () => {
   return (
     <View>
-      <Text> Explore</Text>
+      <Text>Chat</Text>
     </View>
   )
 }
-export default Explore
+export default Chat

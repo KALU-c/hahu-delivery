@@ -1,9 +1,10 @@
 import { View, Text } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 const Order = () => {
   return (
-    <View>
+    <SafeAreaView>
       <Text>Order</Text>
-    </View>
+    </SafeAreaView>
   )
 }
 export default Order

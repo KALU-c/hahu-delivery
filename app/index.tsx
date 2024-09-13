@@ -1,12 +1,14 @@
 import { Link } from 'expo-router'
-import { View, Text } from 'react-native'
+import { View, Text, Image } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const index = () => {
   return (
-    <View>
-      <Text>index</Text>
-      <Link href="/home">Go to Home</Link>
-    </View>
+    <SafeAreaView>
+      <View>
+        <Text>Landing Page</Text>
+      </View>
+    </SafeAreaView>
   )
 }
 

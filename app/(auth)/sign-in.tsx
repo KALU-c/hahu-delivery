@@ -3,12 +3,23 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import icons from '@/constants/icons'
 import CustomInput from '@/components/CustomInput'
 import { useState } from 'react'
+import CustomButton from '@/components/CustomButton'
+import Checkbox from 'expo-checkbox'
+import { Link } from 'expo-router'
 
 const SignIn = () => {
+  const [isChecked, setChecked] = useState(false);
+  const [isSubmitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
     email: "",
-    password: ""
+    password: "",
+    rememberMe: false,
+
   });
+
+  const submitForm = () => {
+    console.log(form);
+  };
 
   return (
     <SafeAreaView>
@@ -23,17 +34,34 @@ const SignIn = () => {
         </View>
 
         <View className='h-[73vh] bg-primary rounded-t-2xl py-10 px-6'>
-          <CustomInput
-            title='EMAIL'
-            value={form.email}
-            handleTextChange={text => setForm({ ...form, email: text })}
-          />
-          <CustomInput
-            title='PASSWORD'
-            value={form.password}
-            handleTextChange={text => setForm({ ...form, password: text })}
-          />
+          <View>
+            <CustomInput
+              title='EMAIL'
+              value={form.email}
+              handleTextChange={text => setForm({ ...form, email: text })}
+            />
+            <CustomInput
+              title='PASSWORD'
+              value={form.password}
+              handleTextChange={text => setForm({ ...form, password: text })}
+            />
+          </View>
+          <View className='flex flex-row justify-between items-center'>
+            <View className='flex flex-row gap-2 items-center'>
+              <Checkbox
+                className='rounded-md'
+                value={form.rememberMe}
+                onValueChange={value => setForm({ ...form, rememberMe: value })}
+                color={isChecked ? '#FF7622' : undefined}
+              />
+              <Text className='text-base text-gray-200'>Remember me</Text>
+            </View>
+            <Text className='text-base text-secondary'>Forgot Password</Text>
+          </View>
+          <CustomButton title='LOG IN' otherStyle='mt-14' handlePress={submitForm} isSubmitting={isSubmitting} />
+          <Text className='text-center mt-2 text-base font-SenMedium'>Don't have an account? <Link href="/sign-up" className='text-secondary font-SenSemibold'>Sign Up</Link></Text>
         </View>
+
       </ScrollView>
     </SafeAreaView>
   )

@@ -1,6 +1,13 @@
-const App = () => {
+import { Link } from 'expo-router'
+import { View, Text } from 'react-native'
+
+const index = () => {
   return (
-    <div>App</div>
+    <View>
+      <Text>index</Text>
+      <Link href="/home">Go to Home</Link>
+    </View>
   )
 }
-export default App
+
+export default index

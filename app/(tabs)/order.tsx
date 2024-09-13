@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
-const Chat = () => {
+const Order = () => {
   return (
     <View>
-      <Text>Chat</Text>
+      <Text>Order</Text>
     </View>
   )
 }
-export default Chat
+export default Order

@@ -9,6 +9,7 @@ import gradientEllipse from "@/assets/icons/rightSideEllipse.png"
 import dottedLine from "@/assets/icons/dottedLine.png"
 import eye from "@/assets/icons/eye.png"
 import eyeHide from "@/assets/icons/eye-hide.png"
+import back from "@/assets/icons/back.png"
 
 export default {
   home,
@@ -22,4 +23,5 @@ export default {
   dottedLine,
   eye,
   eyeHide,
+  back
 };

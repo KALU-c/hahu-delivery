@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, ScrollView, Image, Pressable } from 'react-native'
+import { View, Text, ScrollView, Image } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import icons from '@/constants/icons';
 import CustomInput from '@/components/CustomInput';
@@ -33,17 +33,6 @@ const SignUp = () => {
   return (
     <SafeAreaView>
       <ScrollView className='relative bg-dark h-full'>
-        <Pressable
-          className='absolute p-6 items-center justify-center bg-primary left-5 top-10 z-10 rounded-full'
-          onPress={() => router.replace("/sign-in")}
-        >
-          <Image
-            source={icons.back}
-            width={5}
-            height={5}
-            className='absolute w-[20px] h-[20px] z-10' resizeMode='contain'
-          />
-        </Pressable>
 
         <Image source={icons.darkEllipse} width={200} height={200} className='absolute' />
         <Image source={icons.dottedLine} className='absolute right-0' />
@@ -74,12 +63,7 @@ const SignUp = () => {
 
           <CustomButton title='SIGN UP' otherStyle='mt-4' handlePress={submitForm} isSubmitting={isSubmitting} />
 
-          <Text className='text-center mt-2 text-base font-SenMedium'>
-            Have an account already? {" "}
-            <Link href="/sign-in" className='text-secondary font-SenSemibold'>
-              Sign In
-            </Link>
-          </Text>
+          <Text className='text-center mt-2 text-base font-SenMedium'>Have an account already? <Link href="/sign-in" className='text-secondary font-SenSemibold'>Sign In</Link></Text>
         </View>
 
       </ScrollView>

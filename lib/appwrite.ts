@@ -84,6 +84,11 @@ export const signIn = async (email: string, password: string) => {
   try {
     const session = await account.createEmailPasswordSession(email, password);
 
+    // deletes created sessions
+    // if not you get this error:
+    //  [AppwriteException: Creation of a session is prohibited when a session is active
+    await account.deleteSession(session.$id);
+
     return session;
   } catch (error) {
     console.log(error);

@@ -10,6 +10,7 @@ import dottedLine from "@/assets/icons/dottedLine.png"
 import eye from "@/assets/icons/eye.png"
 import eyeHide from "@/assets/icons/eye-hide.png"
 import back from "@/assets/icons/back.png"
+import search from "@/assets/icons/Search.png"
 
 export default {
   home,
@@ -23,5 +24,6 @@ export default {
   dottedLine,
   eye,
   eyeHide,
-  back
+  back,
+  search
 };

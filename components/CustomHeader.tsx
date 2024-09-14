@@ -3,7 +3,7 @@ import icons from '@/constants/icons'
 
 const CustomHeader = () => {
   return (
-    <View className='flex-row justify-between pt-4'>
+    <View className='flex-row justify-between pt-4 mb-4'>
       <View className='flex-row gap-3 items-center'>
         {/* Menu sidebar trigger */}
         <View className='bg-gray-50 p-4 rounded-full'>

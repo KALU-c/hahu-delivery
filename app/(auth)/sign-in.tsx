@@ -5,7 +5,8 @@ import CustomInput from '@/components/CustomInput'
 import { useState } from 'react'
 import CustomButton from '@/components/CustomButton'
 import Checkbox from 'expo-checkbox'
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
+import { signIn } from '@/lib/appwrite'
 
 const SignIn = () => {
   const [isChecked, setChecked] = useState(false);
@@ -17,8 +18,19 @@ const SignIn = () => {
 
   });
 
-  const submitForm = () => {
-    console.log(form);
+  const submitForm = async () => {
+    setSubmitting(true);
+    try {
+      await signIn(form.email, form.password);
+
+      // set it to global state
+
+      router.replace("/home")
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (

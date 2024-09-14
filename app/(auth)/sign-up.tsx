@@ -4,7 +4,8 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import icons from '@/constants/icons';
 import CustomInput from '@/components/CustomInput';
 import CustomButton from '@/components/CustomButton';
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
+import { createUser } from '@/lib/appwrite';
 
 const SignUp = () => {
   const [isSubmitting, setSubmitting] = useState(false);
@@ -14,8 +15,19 @@ const SignUp = () => {
     password: "",
   });
 
-  const submitForm = () => {
-    console.log(form);
+  const submitForm = async () => {
+    setSubmitting(true);
+    try {
+      const result = await createUser(form.email, form.password, form.name);
+
+      // set it to global state
+
+      router.replace("/home");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (

@@ -21,5 +21,5 @@ export default {
   gradientEllipse,
   dottedLine,
   eye,
-  eyeHide
+  eyeHide,
 };

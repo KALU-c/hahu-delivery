@@ -11,7 +11,7 @@ type TabIconProps = {
 
 const TabIcon = ({ name, icon, color, focused }: TabIconProps) => {
   return (
-    <View className={`items-center justify-center gap-1 ${(focused) && "h-[82px]  rounded-full w-[80px] bg-secondary-bg transition-all"}`}>
+    <View className={`items-center justify-center gap-1 ${(focused) && "h-[82px]  rounded-full w-[80px] bg-gray-50 transition-all"}`}>
       <Image
         source={icon}
         className={`w-6 h-6 ${focused && "scale-150"} transition`}
@@ -31,12 +31,12 @@ const TabsLayout = () => {
         tabBarActiveTintColor: "#FF7622",
         tabBarInactiveTintColor: "#161622",
         tabBarStyle: {
-          backgroundColor: "#FFEBE4",
+          backgroundColor: "#F0F5FA",
           // borderWidth: 1,
-          borderTopWidth: 1,
-          borderColor: "#FFE1CE",
+          // borderTopWidth: 1,
+          // borderColor: "#FFE1CE",
           height: 60,
-          borderTopColor: "#FF7622"
+          // borderTopColor: "#FF7622"
         }
       }}
     >

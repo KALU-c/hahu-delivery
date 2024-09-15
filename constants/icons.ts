@@ -11,6 +11,9 @@ import eye from "@/assets/icons/eye.png"
 import eyeHide from "@/assets/icons/eye-hide.png"
 import back from "@/assets/icons/back.png"
 import search from "@/assets/icons/Search.png"
+import time from "@/assets/icons/time.png"
+import star from "@/assets/icons/star.png"
+
 
 export default {
   home,
@@ -25,5 +28,7 @@ export default {
   eye,
   eyeHide,
   back,
-  search
+  search,
+  time,
+  star,
 };

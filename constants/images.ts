@@ -1,7 +1,13 @@
 import imagePlaceholder from "@/assets/images/imagePlaceholder.png"
 import foodImagePlaceholder from "@/assets/images/foodImagePlaceholder.png"
+import restaurantImagePlaceholder from "@/assets/images/restaurantImagePlaceholder.png"
+import burger from "@/assets/images/burger.png"
+import restaurant1 from "@/assets/images/restaurant1.jpg"
 
 export default {
   imagePlaceholder,
-  foodImagePlaceholder
+  foodImagePlaceholder,
+  restaurantImagePlaceholder,
+  burger,
+  restaurant1
 }

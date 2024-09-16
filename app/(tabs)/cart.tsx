@@ -2,36 +2,51 @@ import { View, Text, ScrollView, Image, Pressable, StatusBar, Alert, FlatList } 
 import { SafeAreaView } from 'react-native-safe-area-context'
 import images from '@/constants/images'
 import icons from '@/constants/icons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import CustomInput from '@/components/CustomInput'
 import CustomButton from '@/components/CustomButton'
+import { useCartContext } from '@/context/CartContext'
 
 type EachCartProps = {
+  id: number;
   name: string;
   price: number;
-  size: number;
+  size: string;
+  count: number;
 }
 
 const cartList = [
-  { id: 1, name: "Pizza Calzone", price: 64, size: 14 },
-  { id: 2, name: "Burger", price: 41, size: 14 },
-  { id: 3, name: "Chicken", price: 15, size: 14 },
-  { id: 4, name: "Pizza", price: 82, size: 14 },
-  { id: 5, name: "Juice", price: 60, size: 14 },
+  { id: 1, name: "Pizza Calzone", price: 64, size: "14", count: 0 },
+  { id: 2, name: "Burger", price: 41, size: "14", count: 0 },
+  { id: 3, name: "Chicken", price: 15, size: "14", count: 0 },
+  { id: 4, name: "Pizza", price: 82, size: "14", count: 0 },
+  { id: 5, name: "Juice", price: 60, size: "14", count: 0 },
 ];
 
-const EachCart = ({ name, price, size }: EachCartProps) => {
-  const [count, setCount] = useState(0);
+const EachCart = ({ id, name, price, size }: EachCartProps) => {
+  const { cartItems, setCartItems } = useCartContext();
 
-  const handleIncrease = () => setCount(count + 1);
+  const handleIncrease = () => {
+    const currentFoodItem = cartItems.find(item => item.id == id);
+    if (!currentFoodItem) {
+      setCartItems(cartList);
+    }
+    setCartItems(prevItems => (
+      prevItems.map(item => (
+        item.id == id ? { ...item, count: item.count + 1 } : item
+      ))
+    ))
+  };
 
   const handleDecrease = () => {
-    if (count === 0) {
-      Alert.alert("Alert", "Order Can not be negative")
-    } else {
-      setCount(count - 1)
-    }
-  }
+    setCartItems(prevItems => (
+      prevItems.map(item => (
+        item.id == id ? { ...item, count: Math.max(0, item.count - 1) } : item
+      ))
+    ))
+  };
+
+  const currentItem = cartItems.find(item => item.id === id);
 
   return (
     <View className='w-full h-[140px] flex-row py-4 px-2 mb-3'>
@@ -69,7 +84,7 @@ const EachCart = ({ name, price, size }: EachCartProps) => {
               />
 
             </Pressable>
-            <Text className='text-[20px] font-SenSemibold text-primary'>{count}</Text>
+            <Text className='text-[20px] font-SenSemibold text-primary'>{currentItem?.count || 0}</Text>
             <Pressable className='p-[2px] h-6 w-6 bg-gray-200 rounded-full items-center justify-center' onPress={handleIncrease}>
               <Image
                 source={icons.plus}
@@ -88,6 +103,17 @@ const EachCart = ({ name, price, size }: EachCartProps) => {
 const Cart = () => {
   const [address, setAddress] = useState("");
   const [edit, setEdit] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const getTotalPrice = () => {
+    cartList.map(item => {
+      setTotalPrice(totalPrice + item.price)
+    })
+  };
+
+  useEffect(() => {
+    getTotalPrice();
+  }, []);
 
   return (
     <>
@@ -99,9 +125,11 @@ const Cart = () => {
               keyExtractor={item => item.id.toString()}
               renderItem={({ item }) => (
                 <EachCart
+                  id={item.id}
                   name={item.name}
                   price={item.price}
                   size={item.size}
+                  count={item.count}
                 />
               )}
               showsVerticalScrollIndicator={false}
@@ -214,7 +242,7 @@ const Cart = () => {
             <View className='flex-row justify-between items-center mb-8'>
               <View className='flex-row gap-1 items-center'>
                 <Text className='text-[18px] font-SenRegular text-gray-100'>TOTAL: </Text>
-                <Text className='text-[28px] font-SenMedium'>$96</Text>
+                <Text className='text-[28px] font-SenMedium'>${totalPrice}</Text>
               </View>
               <View className='flex-row items-center gap-1'>
                 <Text className='text-[19px] font-SenRegular text-secondary'>Breakdown</Text>

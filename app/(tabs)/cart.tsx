@@ -1,104 +1,11 @@
-import { View, Text, ScrollView, Image, Pressable, StatusBar, Alert, FlatList } from 'react-native'
+import { View, Text, Image, Pressable, StatusBar, FlatList, StyleSheet } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import images from '@/constants/images'
 import icons from '@/constants/icons'
 import { useEffect, useState } from 'react'
 import CustomInput from '@/components/CustomInput'
 import CustomButton from '@/components/CustomButton'
 import { useCartContext } from '@/context/CartContext'
-
-type EachCartProps = {
-  id: number;
-  name: string;
-  price: number;
-  size: string;
-  count: number;
-}
-
-const cartList = [
-  { id: 1, name: "Pizza Calzone", price: 64, size: "14", count: 0 },
-  { id: 2, name: "Burger", price: 41, size: "14", count: 0 },
-  { id: 3, name: "Chicken", price: 15, size: "14", count: 0 },
-  { id: 4, name: "Pizza", price: 82, size: "14", count: 0 },
-  { id: 5, name: "Juice", price: 60, size: "14", count: 0 },
-];
-
-const EachCart = ({ id, name, price, size }: EachCartProps) => {
-  const { cartItems, setCartItems } = useCartContext();
-
-  const handleIncrease = () => {
-    const currentFoodItem = cartItems.find(item => item.id == id);
-    if (!currentFoodItem) {
-      setCartItems(cartList);
-    }
-    setCartItems(prevItems => (
-      prevItems.map(item => (
-        item.id == id ? { ...item, count: item.count + 1 } : item
-      ))
-    ))
-  };
-
-  const handleDecrease = () => {
-    setCartItems(prevItems => (
-      prevItems.map(item => (
-        item.id == id ? { ...item, count: Math.max(0, item.count - 1) } : item
-      ))
-    ))
-  };
-
-  const currentItem = cartItems.find(item => item.id === id);
-
-  return (
-    <View className='w-full h-[140px] flex-row py-4 px-2 mb-3'>
-      <Image
-        source={images.burger}
-        className='h-[90px] w-[35%] self-center'
-        resizeMode='contain'
-      />
-      <View className='px-3 justify-between'>
-        <View className='flex-row justify-between w-[80%] py-2'>
-          <Text className='text-primary text-[21px] w-[80%] font-SenRegular'>{name}</Text>
-          <View className='h-6 p-[2px] bg-red-500 items-center justify-center rounded-full'>
-            <Image
-              source={icons.close}
-              className='w-5 h-6'
-              resizeMode='contain'
-              tintColor="white"
-            />
-          </View>
-        </View>
-        <Text className='text-primary text-[20px] font-SenMedium'>
-          price: <Text className='text-primary font-SenSemibold text-[20px]'>${price}</Text>
-        </Text>
-        <View className='flex-row justify-between w-[80%]'>
-          <Text className='text-[18px] text-gray-200 font-SenRegular'>{size}"</Text>
-          <View className='flex-row justify-between w-[40%] items-center '>
-            <Pressable className='p-[2px] bg-gray-200 rounded-full h-6 w-6 items-center justify-center'
-              onPress={handleDecrease}
-            >
-              <Image
-                source={icons.minus}
-                className='w-4 h-4'
-                resizeMode='contain'
-                tintColor="white"
-              />
-
-            </Pressable>
-            <Text className='text-[20px] font-SenSemibold text-primary'>{currentItem?.count || 0}</Text>
-            <Pressable className='p-[2px] h-6 w-6 bg-gray-200 rounded-full items-center justify-center' onPress={handleIncrease}>
-              <Image
-                source={icons.plus}
-                className='w-4 h-4'
-                resizeMode='contain'
-                tintColor="white"
-              />
-            </Pressable>
-          </View>
-        </View>
-      </View>
-    </View>
-  )
-}
+import EachCart, { cartList } from '@/components/cart-items/EachCart'
 
 const Cart = () => {
   const [address, setAddress] = useState("");
@@ -152,6 +59,16 @@ const Cart = () => {
             <View className='flex-row justify-between items-center mb-8'>
               <View className='flex-row gap-1 items-center'>
                 <Text className='text-[18px] font-SenRegular text-gray-100'>TOTAL: </Text>
+                {/* <AnimatedRollingNumber
+                  value={totalPrice}
+                  showPlusSign
+                  showMinusSign
+                  useGrouping
+                  enableCompactNotation
+                  compactToFixed={2}
+                  textStyle={styles.digits}
+                  spinningAnimationConfig={{ duration: 500, easing: Easing.bounce }}
+                /> */}
                 <Text className='text-[28px] font-SenMedium'>${totalPrice}</Text>
               </View>
               <View className='flex-row items-center gap-1'>
@@ -179,5 +96,19 @@ const Cart = () => {
     </>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  digits: {
+    fontSize: 32,
+    fontWeight: "bold",
+    paddingHorizontal: 2,
+    color: "#4A90E2",
+  },
+});
 
 export default Cart

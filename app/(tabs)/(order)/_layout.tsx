@@ -43,12 +43,9 @@ const TabLayout = () => {
           borderBottomColor: "#ddd",
         },
         tabBarActiveTintColor: "#FF7622",
-        tabBarIndicatorStyle: { backgroundColor: "#FF7622" },
+        tabBarIndicatorStyle: { backgroundColor: "#FF7622", elevation: 0, shadowOpacity: 0, shadowColor: "transparent" },
         tabBarInactiveTintColor: "#A0A5BA",
-        tabBarLabelStyle: { fontWeight: 600, fontSize: 16 }
-        // tabBarIcon: ({ color, focused }) => (
-        //   <TopTab name='RealKal' color={color} focused={focused} />
-        // )
+        tabBarLabelStyle: { fontWeight: 600, fontSize: 16, textTransform: "none" }
       }}>
         <MaterialTopTabs.Screen
           name='index'

@@ -7,6 +7,7 @@ import CustomButton from '@/components/CustomButton'
 import { useCartContext } from '@/context/CartContext'
 import EachCart, { cartList } from '@/components/cart-items/EachCart'
 
+
 const Cart = () => {
   const [address, setAddress] = useState("");
   const [edit, setEdit] = useState(false);
@@ -59,16 +60,6 @@ const Cart = () => {
             <View className='flex-row justify-between items-center mb-8'>
               <View className='flex-row gap-1 items-center'>
                 <Text className='text-[18px] font-SenRegular text-gray-100'>TOTAL: </Text>
-                {/* <AnimatedRollingNumber
-                  value={totalPrice}
-                  showPlusSign
-                  showMinusSign
-                  useGrouping
-                  enableCompactNotation
-                  compactToFixed={2}
-                  textStyle={styles.digits}
-                  spinningAnimationConfig={{ duration: 500, easing: Easing.bounce }}
-                /> */}
                 <Text className='text-[28px] font-SenMedium'>${totalPrice}</Text>
               </View>
               <View className='flex-row items-center gap-1'>

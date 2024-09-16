@@ -19,18 +19,19 @@ const SignIn = () => {
   });
 
   const submitForm = async () => {
-    setSubmitting(true);
-    try {
-      await signIn(form.email, form.password);
+    router.replace("/home");
+    // setSubmitting(true);
+    // try {
+    //   await signIn(form.email, form.password);
 
-      // set it to global state
+    //   // set it to global state
 
-      router.replace("/home")
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setSubmitting(false);
-    }
+    //   router.replace("/home")
+    // } catch (error) {
+    //   console.log(error);
+    // } finally {
+    //   setSubmitting(false);
+    // }
   };
 
   return (

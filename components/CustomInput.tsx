@@ -9,15 +9,20 @@ type CustomInputProps = {
   otherStyle?: string;
   keyboardType?: string;
   placeholder?: string;
+  editable?: boolean;
 }
 
-const CustomInput = ({ title, value, handleTextChange, otherStyle, keyboardType, placeholder }: CustomInputProps) => {
+const CustomInput = ({ title, value, handleTextChange, otherStyle, keyboardType, placeholder, editable }: CustomInputProps) => {
 
   const [showPassword, setShowPassword] = useState(false);
 
   return (
     <View className={`relative gap-2 mb-8 ${otherStyle}`}>
-      <Text className='font-SenMedium text-[16px]'>{title}</Text>
+      {
+        title?.length !== 0 && (
+          <Text className='font-SenMedium text-[16px]'>{title}</Text>
+        )
+      }
       <View className='relative border-2 border-black-100/10 focus:border-secondary rounded-md justify-center'>
         <TextInput
           className={`bg-gray-50 h-[55px] px-4 text-[18px] font-SenRegular rounded-md pr-11 ${placeholder?.includes("Search") && "pl-11"}`}
@@ -26,6 +31,7 @@ const CustomInput = ({ title, value, handleTextChange, otherStyle, keyboardType,
           placeholder={placeholder}
           secureTextEntry={title?.toLowerCase() === "password" && !showPassword}
           autoCorrect={false}
+          editable={editable}
         />
         {
           title?.toLowerCase() === "password" && (

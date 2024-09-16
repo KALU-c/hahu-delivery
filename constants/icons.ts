@@ -13,6 +13,9 @@ import back from "@/assets/icons/back.png"
 import search from "@/assets/icons/Search.png"
 import time from "@/assets/icons/time.png"
 import star from "@/assets/icons/star.png"
+import close from "@/assets/icons/close.png"
+import plus from "@/assets/icons/plus.png"
+import minus from "@/assets/icons/minus.png"
 
 
 export default {
@@ -31,4 +34,7 @@ export default {
   search,
   time,
   star,
+  close,
+  plus,
+  minus
 };

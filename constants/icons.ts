@@ -16,6 +16,7 @@ import star from "@/assets/icons/star.png"
 import close from "@/assets/icons/close.png"
 import plus from "@/assets/icons/plus.png"
 import minus from "@/assets/icons/minus.png"
+import more from "@/assets/icons/more.png"
 
 
 export default {
@@ -36,5 +37,6 @@ export default {
   star,
   close,
   plus,
-  minus
+  minus,
+  more
 };

@@ -1,4 +1,4 @@
-import { View, Text, Image, Pressable, StatusBar, FlatList, StyleSheet } from 'react-native'
+import { View, Text, Image, Pressable, StatusBar, FlatList } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import icons from '@/constants/icons'
 import { useEffect, useState } from 'react'
@@ -88,18 +88,5 @@ const Cart = () => {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  digits: {
-    fontSize: 32,
-    fontWeight: "bold",
-    paddingHorizontal: 2,
-    color: "#4A90E2",
-  },
-});
 
 export default Cart

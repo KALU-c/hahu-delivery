@@ -5,7 +5,7 @@ import icons from '@/constants/icons';
 import CustomInput from '@/components/CustomInput';
 import CustomButton from '@/components/CustomButton';
 import { Link, router } from 'expo-router';
-import { createUser } from '@/lib/appwrite';
+import { createUser } from '@/lib/firebase';
 
 const SignUp = () => {
   const [isSubmitting, setSubmitting] = useState(false);
@@ -19,7 +19,6 @@ const SignUp = () => {
     setSubmitting(true);
     try {
       const result = await createUser(form.email, form.password, form.name);
-
       // set it to global state
 
       router.replace("/home");

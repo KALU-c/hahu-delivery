@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 type CartItem = {
   id: number;
@@ -28,6 +28,7 @@ export const useCartContext = () => useContext(CartContext);
 const CartContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
+
 
   return (
     <CartContext.Provider

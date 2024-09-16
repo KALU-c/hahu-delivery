@@ -103,17 +103,17 @@ const EachCart = ({ id, name, price, size }: EachCartProps) => {
 const Cart = () => {
   const [address, setAddress] = useState("");
   const [edit, setEdit] = useState(false);
-  const [totalPrice, setTotalPrice] = useState(0);
 
-  const getTotalPrice = () => {
-    cartList.map(item => {
-      setTotalPrice(totalPrice + item.price)
-    })
+  const { totalPrice, setTotalPrice, cartItems } = useCartContext();
+
+  const calculateTotalPrice = () => {
+    const total = cartItems.reduce((acc, item) => acc + item.price * item.count, 0);
+    setTotalPrice(total);
   };
 
   useEffect(() => {
-    getTotalPrice();
-  }, []);
+    calculateTotalPrice();
+  }, [cartItems]);
 
   return (
     <>

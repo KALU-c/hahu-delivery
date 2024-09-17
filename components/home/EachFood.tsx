@@ -15,7 +15,7 @@ const EachFood = ({ name, restaurant, price }: EachFoodProps) => {
     >
       <Image
         source={images.burger}
-        className='h-[150px] w-[150px]'
+        className='h-[110px] w-[110px] self-center my-2'
         resizeMode='contain'
       />
       <Text className='font-SenBold text-[21px] items-start w-full px-2 mb-2'>{name}</Text>

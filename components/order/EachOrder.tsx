@@ -6,7 +6,7 @@ import CustomButton from "../CustomButton"
 
 const EachOrder = ({ id, restaurant, totalPrice, totalItem, status }: EachOrderType) => {
   return (
-    <View className='px-2 bg-primary my-2 py-2 border-2 border-gray-50 rounded-lg'>
+    <View className='px-2 bg-primary my-2 py-4 border-2 border-gray-50 rounded-lg'>
       <View>
         <View className='flex-row justify-between items-start w-full py-4'>
           <View className='flex-row gap-4 items-center'>

@@ -1,79 +1,40 @@
-import CustomButton from '@/components/CustomButton'
-import { View, Text, ScrollView, StatusBar, Image, StyleSheet } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import images from '@/constants/images'
+import { View, StatusBar, FlatList } from 'react-native'
+import { EachOrderType } from '@/types/order'
+import EachOrder from '@/components/order/EachOrder'
 
-const EachOrder = () => {
-  return (
-    <View className='px-2 bg-primary my-2 py-2 border-2 border-gray-50 rounded-lg'>
-      <View>
-        <View className='flex-row justify-between items-start w-full py-4'>
-          <View className='flex-row gap-4 items-center'>
-            <Image
-              source={images.foodImagePlaceholder}
-              className='w-[100px] h-[100px]'
-              resizeMode='contain'
-            />
-            <View className='gap-1'>
-              <View className='flex-row justify-between items-center  w-[77%]'>
-                <Text className='font-SenSemibold text-[20px]'>Pizza Hut</Text>
-                <Text className='font-SenRegular text-gray-100 text-[16px] underline'>#162432</Text>
-              </View>
-              <View className='flex-row items-center py-2'>
-                <Text className='font-SenSemibold text-[18px] border-r-[1px] border-r-gray-100 pr-4'>$35.25</Text>
-                <Text className='font-SenRegular text-[15px] text-gray-100 pl-4'>03 Items</Text>
-              </View>
-            </View>
-          </View>
-
-        </View>
-        <View className='flex-row w-full justify-between'>
-          <CustomButton
-            title='Track Order'
-            otherStyle='w-[45%] h-[45px]'
-            textStyle=' text-[17px]'
-          />
-          <CustomButton
-            title='Cancel'
-            otherStyle='w-[45%] h-[45px] bg-transparent border-2 border-secondary'
-            textStyle='text-secondary text-[17px]'
-          />
-        </View>
-      </View>
-    </View>
-  )
-}
+const EachOrderList: EachOrderType[] = [
+  { id: 1, restaurant: "Pizza Hut", totalPrice: 35.25, totalItem: 3, status: "Order Received" },
+  { id: 2, restaurant: "McDonald", totalPrice: 40.15, totalItem: 2, status: "Preparing" },
+  { id: 3, restaurant: "Starbucks", totalPrice: 10.20, totalItem: 1, status: "Preparing" },
+  { id: 4, restaurant: "Pizza Hut", totalPrice: 35.25, totalItem: 3, status: "Ready for Pickup" },
+  { id: 5, restaurant: "Pizza Hut", totalPrice: 35.25, totalItem: 3, status: "Delivered" },
+  { id: 6, restaurant: "Pizza Hut", totalPrice: 35.25, totalItem: 3, status: "Delivered" },
+  { id: 7, restaurant: "Pizza Hut", totalPrice: 35.25, totalItem: 3, status: "Delivered" },
+];
 
 const Order = () => {
   return (
     <>
-      {/* <SafeAreaView className='bg-primary h-full'> */}
-      <ScrollView className='px-4 h-full bg-primary'>
-        <EachOrder />
-        <EachOrder />
-        <EachOrder />
-        <EachOrder />
-        <EachOrder />
-        <EachOrder />
-      </ScrollView>
-      {/* </SafeAreaView> */}
+      <View className='px-4 h-full bg-primary'>
+        <FlatList
+          data={EachOrderList}
+          keyExtractor={item => item.id.toString()}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item }) => (
+            <EachOrder
+              id={item.id}
+              restaurant={item.restaurant}
+              totalPrice={item.totalPrice}
+              totalItem={item.totalItem}
+              status={item.status}
+            />
+          )}
+        />
+      </View>
       <StatusBar backgroundColor="#fff" barStyle="dark-content" />
     </>
   )
 };
 
-const styles = StyleSheet.create({
-  boxShadow: {
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
-
-    elevation: 6,
-  }
-});
 
 export default Order

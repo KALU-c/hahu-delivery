@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from 'react-native'
+import { View } from 'react-native'
 import {
   createMaterialTopTabNavigator,
   MaterialTopTabNavigationOptions,
@@ -22,12 +22,6 @@ type TopTabType = {
   name: string;
   color: string;
   focused: boolean;
-}
-
-const TopTab = ({ name, color, focused }: TopTabType) => {
-  return (
-    <Text>{name}</Text>
-  )
 }
 
 const TabLayout = () => {

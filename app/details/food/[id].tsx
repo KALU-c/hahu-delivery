@@ -13,7 +13,6 @@ const FoodDetail = () => {
   const item = JSON.parse(params.item as string) as FoodDetailType;
   const { id, name, price, restaurant } = item;
 
-  console.log(item);
   return (
     <View>
       <Text>{id}</Text>

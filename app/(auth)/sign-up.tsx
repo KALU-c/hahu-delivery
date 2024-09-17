@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, ScrollView, Image, Pressable } from 'react-native'
+import { View, Text, ScrollView, Image, Pressable, Alert } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import icons from '@/constants/icons';
 import CustomInput from '@/components/CustomInput';
@@ -16,16 +16,25 @@ const SignUp = () => {
   });
 
   const submitForm = async () => {
-    setSubmitting(true);
-    try {
-      const result = await createUser(form.email, form.password, form.name);
-      // set it to global state
+    if (form.name.length >= 6 && form.email !== "" && form.password.length >= 6) {
+      setSubmitting(true);
+      try {
+        const result = await createUser(form.email, form.password, form.name);
+        // set it to global state
+        // console.log(result);
+        if (result?.displayName === form.name && result.email === form.email) {
+          router.replace("/home");
+        } else {
+          Alert.alert("Registration Failed", "Something went wrong, please try again");
+        }
 
-      router.replace("/home");
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setSubmitting(false);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setSubmitting(false);
+      }
+    } else {
+      Alert.alert("Input Field", "Name: >= 6 characters \nPassword: >= 6 characters")
     }
   };
 

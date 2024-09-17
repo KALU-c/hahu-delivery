@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Image } from 'react-native'
+import { View, Text, ScrollView, Image, Alert } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import icons from '@/constants/icons'
 import CustomInput from '@/components/CustomInput'
@@ -19,18 +19,27 @@ const SignIn = () => {
   });
 
   const submitForm = async () => {
-    router.replace("/home");
-    setSubmitting(true);
-    try {
-      await signIn(form.email, form.password);
+    // router.replace("/home");
+    if (form.email !== "" && form.password.length >= 6) {
+      setSubmitting(true);
+      try {
+        const result = await signIn(form.email, form.password);
+        // console.log(result);
 
-      // set it to global state
+        // set it to global state
 
-      router.replace("/home")
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setSubmitting(false);
+        if (result) {
+          router.replace("/home")
+        } else {
+          Alert.alert("Invalid Login Details", "Please check your email and password is correct");
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setSubmitting(false);
+      }
+    } else {
+      Alert.alert("Password Input", "Password input should be at least 6 characters");
     }
   };
 

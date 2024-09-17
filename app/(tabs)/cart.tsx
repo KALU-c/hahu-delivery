@@ -26,8 +26,8 @@ const Cart = () => {
   return (
     <>
       <SafeAreaView>
-        <View className='bg-dark'>
-          <View className='h-[55vh] py-3 px-4'>
+        <View className='bg-primary'>
+          <View className='h-[73vh] pt-3 pb-1 px-4'>
             <FlatList
               data={cartList}
               keyExtractor={item => item.id.toString()}
@@ -44,19 +44,19 @@ const Cart = () => {
               className='flex-1'
             />
           </View>
-          <View className='h-[40vh] bg-primary rounded-t-3xl px-6 pt-6'>
-            <View className='flex-row justify-between items-center'>
+          <View className='h-[23vh] bg-primary rounded-t-3xl px-6 pt-6 border-gray-100 border-[1px]'>
+            {/* <View className='flex-row justify-between items-center'>
               <Text className='text-[20px] font-SenRegular text-gray-100 tracking-tighter'>DELIVERY ADDRESS</Text>
               <Pressable onPress={() => setEdit(!edit)}>
                 <Text className={`text-[20px] font-SenRegular text-secondary tracking-tighter underline`}>{edit ? "CONFIRM" : "EDIT"}</Text>
               </Pressable>
-            </View>
-            <CustomInput
+            </View> */}
+            {/* <CustomInput
               value={address}
               handleTextChange={text => setAddress(text)}
               editable={edit}
               otherStyle='mb-6'
-            />
+            /> */}
             <View className='flex-row justify-between items-center mb-8'>
               <View className='flex-row gap-1 items-center'>
                 <Text className='text-[18px] font-SenRegular text-gray-100'>TOTAL: </Text>
@@ -82,7 +82,7 @@ const Cart = () => {
       </SafeAreaView>
       <StatusBar
         backgroundColor="#121223"
-        barStyle="light-content"
+        barStyle="dark-content"
       />
     </>
   )

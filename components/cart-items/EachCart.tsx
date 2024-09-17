@@ -47,7 +47,7 @@ const EachCart = ({ id, name, price, size }: EachCartProps) => {
   const currentItem = cartItems.find(item => item.id === id);
 
   return (
-    <View className='w-full h-[140px] flex-row py-4 px-2 mb-3'>
+    <View className='w-full bg-gray-50 h-[140px] flex-row py-4 px-2 mb-3 border-[1px] border-gray-100 rounded-xl'>
       <Image
         source={images.burger}
         className='h-[90px] w-[35%] self-center'
@@ -55,8 +55,8 @@ const EachCart = ({ id, name, price, size }: EachCartProps) => {
       />
       <View className='px-3 justify-between'>
         <View className='flex-row justify-between w-[80%] py-2'>
-          <Text className='text-primary text-[21px] w-[80%] font-SenRegular'>{name}</Text>
-          <View className='h-6 p-[2px] bg-red-500 items-center justify-center rounded-full'>
+          <Text className='text-dark text-[21px] w-[80%] font-SenMedium'>{name}</Text>
+          <View className='h-6 p-[2px] bg-secondary items-center justify-center rounded-full'>
             <Image
               source={icons.close}
               className='w-5 h-6'
@@ -65,8 +65,8 @@ const EachCart = ({ id, name, price, size }: EachCartProps) => {
             />
           </View>
         </View>
-        <Text className='text-primary text-[20px] font-SenMedium'>
-          price: <Text className='text-primary font-SenSemibold text-[20px]'>${price}</Text>
+        <Text className='text-dark text-[20px] font-SenRegular'>
+          price: <Text className='text-dark font-SenSemibold text-[20px]'>${price}</Text>
         </Text>
         <View className='flex-row justify-between w-[80%]'>
           <Text className='text-[18px] text-gray-200 font-SenRegular'>{size}"</Text>
@@ -83,7 +83,7 @@ const EachCart = ({ id, name, price, size }: EachCartProps) => {
 
             </Pressable>
 
-            <Text className='text-[20px] font-SenSemibold text-primary'>{currentItem?.count || 0}</Text>
+            <Text className='text-[20px] font-SenSemibold text-dark'>{currentItem?.count || 0}</Text>
             <Pressable className='p-[2px] h-6 w-6 bg-gray-200 rounded-full items-center justify-center' onPress={handleIncrease}>
               <Image
                 source={icons.plus}

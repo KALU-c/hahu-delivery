@@ -57,8 +57,10 @@ const profileItemList3 = [
 const Profile = () => {
   return (
     <SafeAreaView className='bg-primary h-full px-3'>
-      <ProfileHeader title='Profile' />
-      <ScrollView className='mt-4' showsVerticalScrollIndicator={false}>
+      <View className='mt-4 mb-2'>
+        <ProfileHeader title='Profile' />
+      </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View className='mt-6 px-2'>
           <ProfileInfoWrapper />
           <View className='p-3 mt-8 bg-[#f6f5f5] rounded-xl'>

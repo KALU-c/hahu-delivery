@@ -66,7 +66,8 @@ const index = () => {
         <CustomButton
           title={`${currentPage == 3 ? "GET STARTED" : "NEXT"}`}
           otherStyle='mb-4'
-          handlePress={handleNext}
+          // handlePress={handleNext}
+          handlePress={() => router.replace("/home")}
         />
         <CustomButton
           title='Skip'

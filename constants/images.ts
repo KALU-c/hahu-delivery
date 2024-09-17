@@ -5,6 +5,7 @@ import burger from "@/assets/images/burger.png"
 import restaurant1 from "@/assets/images/restaurant1.jpg"
 import profile from "@/assets/images/pp.avif"
 import profile2 from "@/assets/images/profile2.jpg"
+import detailImagePlaceholder from "@/assets/images/detailsImagePlaceholder.png"
 
 export default {
   imagePlaceholder,
@@ -13,5 +14,6 @@ export default {
   burger,
   restaurant1,
   profile,
-  profile2
+  profile2,
+  detailImagePlaceholder
 }

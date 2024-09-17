@@ -17,6 +17,7 @@ import close from "@/assets/icons/close.png"
 import plus from "@/assets/icons/plus.png"
 import minus from "@/assets/icons/minus.png"
 import more from "@/assets/icons/more.png"
+import restaurantIcon from "@/assets/icons/restaurantIcon.png"
 
 
 export default {
@@ -38,5 +39,6 @@ export default {
   close,
   plus,
   minus,
-  more
+  more,
+  restaurantIcon
 };

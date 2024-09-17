@@ -40,25 +40,25 @@ const index = () => {
           <Image source={images.imagePlaceholder} className='w-[300px] h-[350px]' />
           <Text className='font-SenExtraBold text-[24px]'>All your favoritesF</Text>
           <Text className='font-SenRegular text-[16px] text-center'>Get all your loved foods in one once place,
-            you just place the orer we do the rest</Text>
+            you just place the order we do the rest</Text>
         </View>
         <View key="2" className='items-center justify-center px-6 gap-3'>
           <Image source={images.imagePlaceholder} className='w-[300px] h-[350px]' />
           <Text className='font-SenExtraBold text-[24px]'>All your favoritesF</Text>
           <Text className='font-SenRegular text-[16px] text-center'>Get all your loved foods in one once place,
-            you just place the orer we do the rest</Text>
+            you just place the order we do the rest</Text>
         </View>
         <View key="3" className='items-center justify-center px-6 gap-3'>
           <Image source={images.imagePlaceholder} className='w-[300px] h-[350px]' />
           <Text className='font-SenExtraBold text-[24px]'>All your favoritesF</Text>
           <Text className='font-SenRegular text-[16px] text-center'>Get all your loved foods in one once place,
-            you just place the orer we do the rest</Text>
+            you just place the order we do the rest</Text>
         </View>
         <View key="4" className='items-center justify-center px-6 gap-3'>
           <Image source={images.imagePlaceholder} className='w-[300px] h-[350px]' />
           <Text className='font-SenExtraBold text-[24px]'>All your favoritesF</Text>
           <Text className='font-SenRegular text-[16px] text-center'>Get all your loved foods in one once place,
-            you just place the orer we do the rest</Text>
+            you just place the order we do the rest</Text>
         </View>
       </PagerView>
       <PageIndicator count={4} current={currentPage} color='red' className='h-[2vh] self-center mb-10' />
@@ -75,7 +75,6 @@ const index = () => {
           handlePress={handleSkip}
         />
       </View>
-      {/* </View> */}
     </SafeAreaView>
   )
 }

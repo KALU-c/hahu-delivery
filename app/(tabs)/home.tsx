@@ -26,8 +26,6 @@ const Home = () => {
         <ScrollView className='px-3' showsVerticalScrollIndicator={false}>
           <CustomHeader />
           <View className='px-2'>
-            {/* <Text className='font-SenRegular text-[18px] mb-8'>Hey Halal, <Text className='font-SenBold text-[18px]'>Good Afternoon!</Text></Text> */}
-
             <CustomInput
               placeholder='Search dishes, restaurants'
               otherStyle='mt-0'

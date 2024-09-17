@@ -19,7 +19,6 @@ const SignIn = () => {
   });
 
   const submitForm = async () => {
-    // router.replace("/home");
     if (form.email !== "" && form.password.length >= 6) {
       setSubmitting(true);
       try {

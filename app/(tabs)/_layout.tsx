@@ -2,13 +2,7 @@ import { Tabs } from 'expo-router'
 import { View, Text, Image } from 'react-native'
 import icons from '@/constants/icons'
 import CartContextProvider from '@/context/CartContext';
-
-type TabIconProps = {
-  name: string;
-  icon: any;
-  color: string;
-  focused: boolean;
-};
+import { TabIconProps } from '@/types/layout';
 
 const TabIcon = ({ name, icon, color, focused }: TabIconProps) => {
   return (
@@ -34,11 +28,7 @@ const TabsLayout = () => {
           tabBarInactiveTintColor: "#161622",
           tabBarStyle: {
             backgroundColor: "#F0F5FA",
-            // borderWidth: 1,
-            // borderTopWidth: 1,
-            // borderColor: "#FFE1CE",
             height: 60,
-            // borderTopColor: "#FF7622"
           }
         }}
       >

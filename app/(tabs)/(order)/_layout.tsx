@@ -28,9 +28,9 @@ const TabLayout = () => {
   return (
     <SafeAreaView className='bg-primary h-full'>
       {/* <ScrollView> */}
-      <View className='px-4 pb-3 pt-5'>
+      {/* <View className='px-4 pb-3 pt-5'>
         <Header />
-      </View>
+      </View> */}
       <MaterialTopTabs screenOptions={{
         tabBarStyle: {
           borderBottomWidth: 1,

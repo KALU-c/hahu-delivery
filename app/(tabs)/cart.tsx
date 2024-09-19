@@ -6,6 +6,7 @@ import CustomInput from '@/components/CustomInput'
 import CustomButton from '@/components/CustomButton'
 import { useCartContext } from '@/context/CartContext'
 import EachCart, { cartList } from '@/components/cart-items/EachCart'
+import { router } from 'expo-router'
 
 
 const Cart = () => {

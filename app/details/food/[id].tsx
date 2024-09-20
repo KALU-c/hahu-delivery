@@ -9,6 +9,104 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import { FoodListType } from '@/types/home';
 import CustomButton from '@/components/CustomButton';
 
+type ReviewType = {
+  id: number;
+  reviewerName: string;
+  reviewerId: number;
+  rating: number;
+  review: string;
+  date: Date | string;
+}
+
+const FoodReviewList: ReviewType[] = [
+  {
+    id: 1,
+    reviewerName: "John Doe",
+    reviewerId: 101,
+    rating: 4.5,
+    review: "The food was delicious and fresh. Delivery was fast, but the packaging could be improved.",
+    date: "2024-09-18",
+  },
+  {
+    id: 2,
+    reviewerName: "Emily Smith",
+    reviewerId: 102,
+    rating: 5,
+    review: "Absolutely loved the taste and presentation. Will definitely order again!",
+    date: "2024-09-17",
+  },
+  {
+    id: 3,
+    reviewerName: "Michael Johnson",
+    reviewerId: 103,
+    rating: 3.8,
+    review: "Good taste, but portion size was a bit small for the price.",
+    date: "2024-09-16",
+  },
+  {
+    id: 4,
+    reviewerName: "Sophia Brown",
+    reviewerId: 104,
+    rating: 4.2,
+    review: "The meal was tasty, but the sides were a little underwhelming. Overall, a good experience.",
+    date: "2024-09-15",
+  },
+  {
+    id: 5,
+    reviewerName: "David Lee",
+    reviewerId: 105,
+    rating: 4.7,
+    review: "Great flavor and well-cooked. The delivery was on time, and I’m impressed with the quality.",
+    date: "2024-09-14",
+  },
+]
+
+const EachReview = ({ id, reviewerName, reviewerId, rating, review, date }: ReviewType) => {
+  const [viewMore, setViewMore] = useState(false);
+
+
+  return (
+    <View className='bg-gray-50 border-[1px] border-red-400 p-3 mb-2 mt-4 rounded-xl'>
+      <View className='flex-row justify-between'>
+        <View className='flex-row items-center'>
+          <Image
+            source={images.profile2}
+            className='w-12 h-12 rounded-full mr-2'
+            resizeMode='contain'
+          />
+          <View>
+            <Text className='text-[16px] font-SenSemibold tracking-tighter'>{reviewerName}</Text>
+            <Text className='text-gray-100'>#{reviewerId}</Text>
+          </View>
+        </View>
+        <View className='flex-row pt-1'>
+          <Image
+            source={icons.star}
+            className='w-5 h-5 mr-1'
+            resizeMode='contain'
+            tintColor="#FF7622"
+          />
+          <Text className='font-SenMedium text-[16px]'>{rating}</Text>
+        </View>
+      </View>
+      <View className='py-3 transition-all'>
+        <Text className='text-[16px] font-SenMedium tracking-tighter transition'>{!viewMore ? `${review.slice(0, 80)}...` : review}</Text>
+      </View>
+      <View className={`flex-row ${review.length <= 80 ? "justify-end" : "justify-between"} items-center`}>
+        {
+          review.length > 80 && (
+            <Pressable className='flex-row items-center' onPress={() => setViewMore(!viewMore)}>
+              <Text className='text-gray-200 mr-[2px] font-SenRegular text-[16px]'>View More</Text>
+              <AntDesign name={!viewMore ? "right" : "up"} size={12} color="black" />
+            </Pressable>
+          )
+        }
+        <Text className='font-SenRegular text-gray-100'>{typeof date === 'string' ? date : date.toLocaleDateString()}</Text>
+      </View>
+    </View>
+  )
+}
+
 const FoodDetail = () => {
   const params = useLocalSearchParams();
   const item = JSON.parse(params.item as string) as FoodListType;
@@ -119,104 +217,33 @@ const FoodDetail = () => {
                 <Text className='text-[20px] font-SenMedium text-green-600'>Reviews</Text>
                 <Text className='text-[20px] font-SenMedium text-gray-100'>13</Text>
               </View>
-              <View className='bg-gray-50 border-[1px] border-red-400 p-3 mb-2 mt-4 rounded-xl'>
-                <View className='flex-row justify-between'>
-                  <View className='flex-row items-center'>
-                    <Image
-                      source={images.profile2}
-                      className='w-12 h-12 rounded-full mr-2'
-                      resizeMode='contain'
-                    />
-                    <View>
-                      <Text className='text-[16px] font-SenSemibold tracking-tighter'>Daring Nguyen</Text>
-                      <Text className='text-gray-100'>#12223</Text>
-                    </View>
-                  </View>
-                  <View className='flex-row pt-1'>
-                    <Image
-                      source={icons.star}
-                      className='w-5 h-5 mr-1'
-                      resizeMode='contain'
-                      tintColor="#FF7622"
-                    />
-                    <Text className='font-SenMedium text-[16px]'>4.3</Text>
-                  </View>
-                </View>
-                <View className='py-3'>
-                  <Text className='text-[16px] font-SenMedium tracking-tighter'>Faucibus eu condimentum maecenas sollitudin vitae.condimentum condimen...</Text>
-                </View>
-                <View className='flex-row justify-end'>
-                  <Text>22-03-2024</Text>
-                </View>
-              </View>
-              <View className='bg-gray-50 border-[1px] border-red-400 p-3 mb-2 rounded-xl'>
-                <View className='flex-row justify-between'>
-                  <View className='flex-row items-center'>
-                    <Image
-                      source={images.profile2}
-                      className='w-12 h-12 rounded-full mr-2'
-                      resizeMode='contain'
-                    />
-                    <View>
-                      <Text className='text-[16px] font-SenSemibold tracking-tighter'>Daring Nguyen</Text>
-                      <Text className='text-gray-100'>#12223</Text>
-                    </View>
-                  </View>
-                  <View className='flex-row pt-1'>
-                    <Image
-                      source={icons.star}
-                      className='w-5 h-5 mr-1'
-                      resizeMode='contain'
-                      tintColor="#FF7622"
-                    />
-                    <Text className='font-SenMedium text-[16px]'>4.3</Text>
-                  </View>
-                </View>
-                <View className='py-3'>
-                  <Text className='text-[16px] font-SenMedium tracking-tighter'>Faucibus eu condimentum maecenas sollitudin vitae.condimentum condimen...</Text>
-                </View>
-                <View className='flex-row justify-end'>
-                  <Text>22-03-2024</Text>
-                </View>
-              </View>
-              <View className='bg-gray-50 border-[1px] border-red-400 p-3 mb-2 rounded-xl'>
-                <View className='flex-row justify-between'>
-                  <View className='flex-row items-center'>
-                    <Image
-                      source={images.profile2}
-                      className='w-12 h-12 rounded-full mr-2'
-                      resizeMode='contain'
-                    />
-                    <View>
-                      <Text className='text-[16px] font-SenSemibold tracking-tighter'>Daring Nguyen</Text>
-                      <Text className='text-gray-100'>#12223</Text>
-                    </View>
-                  </View>
-                  <View className='flex-row pt-1'>
-                    <Image
-                      source={icons.star}
-                      className='w-5 h-5 mr-1'
-                      resizeMode='contain'
-                      tintColor="#FF7622"
-                    />
-                    <Text className='font-SenMedium text-[16px]'>4.3</Text>
-                  </View>
-                </View>
-                <View className='py-3'>
-                  <Text className='text-[16px] font-SenMedium tracking-tighter'>Faucibus eu condimentum maecenas sollitudin vitae.condimentum condimen...</Text>
-                </View>
-                <View className='flex-row justify-end'>
-                  <Text>22-03-2024</Text>
-                </View>
-              </View>
+              {
+                FoodReviewList.map(item => (
+                  <EachReview
+                    key={item.id}
+                    id={item.id}
+                    reviewerName={item.reviewerName}
+                    reviewerId={item.reviewerId}
+                    rating={item.rating}
+                    review={item.review}
+                    date={item.date}
+                  />
+                ))
+              }
             </View>
           </View>
 
         </ScrollView>
-        <View className='h-[60px]'>
+        <View className='h-[60px] flex-row items-center justify-between'>
           <CustomButton
             title='ADD TO CART'
-            otherStyle='rounded-xl'
+            otherStyle='rounded-md h-[40px] px-2 w-[48%]'
+            textStyle='text-[15px]'
+          />
+          <CustomButton
+            title='ADD TO FAVORITE'
+            otherStyle='rounded-md h-[40px] px-2 w-[48%] bg-transparent border-[1px] border-secondary'
+            textStyle='text-[15px] text-secondary'
           />
           {/* <Text className='text-[15px] font-SenRegular'>INGREDIENTS</Text> */}
         </View>

@@ -47,7 +47,7 @@ const EachCart = ({ id, name, price, size }: EachCartProps) => {
   const currentItem = cartItems.find(item => item.id === id);
 
   return (
-    <View className='w-full bg-gray-50 h-[140px] flex-row py-4 px-2 mb-3 border-[1px] border-gray-100 rounded-xl'>
+    <View className='w-full bg-gray-50 h-[140px] flex-row py-4 px-2 mb-3 rounded-xl'>
       <Image
         source={images.burger}
         className='h-[90px] w-[35%] self-center'

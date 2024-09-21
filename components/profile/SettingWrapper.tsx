@@ -10,9 +10,9 @@ type SettingWrapperProps = {
 
 const SettingWrapper = ({ icon, title, handlePress }: SettingWrapperProps) => {
   return (
-    <Pressable className='flex-row justify-between items-center py-2 px-1 mt-1' onPress={handlePress}>
+    <Pressable className='flex-row justify-between items-center py-2 mt-1 bg-gray-50 rounded-md px-2' onPress={handlePress}>
       <View className='flex-row items-center'>
-        <View className='p-3 bg-primary rounded-full'>
+        <View className='p-2 bg-primary rounded-full'>
           {icon}
         </View>
         <Text className='font-SenRegular text-[20px] ml-3'>{title}</Text>

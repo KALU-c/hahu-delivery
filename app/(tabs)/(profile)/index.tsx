@@ -14,43 +14,52 @@ import { router } from 'expo-router'
 const profileItemList1 = [
   {
     title: "Profile Info",
-    icon: <Feather name="user" size={26} color="#FF7622" />
+    icon: <Feather name="user" size={22} color="#FF7622" />,
+    handlePress: () => router.push("/personalInfo")
   },
   {
     title: "Addresses",
-    icon: <FontAwesome5 name="map" size={24} color="#413DFB" />
+    icon: <FontAwesome5 name="map" size={22} color="#413DFB" />,
+    handlePress: () => router.push("/address")
   },
 ]
 const profileItemList2 = [
   {
     title: "Cart",
-    icon: <Image source={icons.bag} className='h-6 w-6' resizeMode='contain' tintColor="#369BFF" />
+    icon: <Image source={icons.bag} className='h-5 w-5' resizeMode='contain' tintColor="#369BFF" />,
+    handlePress: () => router.push("/cart")
   },
   {
     title: "Favorite",
-    icon: <MaterialIcons name="favorite-border" size={26} color="#B33DFB" />
+    icon: <MaterialIcons name="favorite-border" size={22} color="#B33DFB" />,
+    handlePress: () => router.push("/favorite")
   },
   {
     title: "Notifications",
-    icon: <Feather name="bell" size={24} color="#FFAA2A" />
+    icon: <Feather name="bell" size={22} color="#FFAA2A" />,
+    handlePress: () => router.push("/notifications")
   },
   {
     title: "Payment Method",
-    icon: <AntDesign name="creditcard" size={24} color="#369BFF" />
+    icon: <AntDesign name="creditcard" size={22} color="#369BFF" />,
+    handlePress: () => router.push("/paymentMethod")
   },
 ]
 const profileItemList3 = [
   {
     title: "FAQs",
-    icon: <AntDesign name="questioncircleo" size={24} color="#FB6D3A" />
+    icon: <AntDesign name="questioncircleo" size={22} color="#FB6D3A" />,
+    handlePress: () => router.push("/faq")
   },
   {
     title: "User Reviews",
-    icon: <Feather name="command" size={24} color="#2AE1E1" />
+    icon: <Feather name="command" size={22} color="#2AE1E1" />,
+    handlePress: () => router.push("/userReviews")
   },
   {
     title: "Settings",
-    icon: <Feather name="settings" size={24} color="#413DFB" />
+    icon: <Feather name="settings" size={22} color="#413DFB" />,
+    handlePress: () => router.push("/settings")
   },
 ];
 
@@ -61,42 +70,45 @@ const Profile = () => {
         <ProfileHeader title='Profile' />
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View className='mt-6 px-2'>
+        <View className='mt-4 px-2'>
           <ProfileInfoWrapper />
-          <View className='p-3 mt-8 bg-[#f6f5f5] rounded-xl'>
+          <View className='py-1 mt-4 rounded-xl'>
             {
               profileItemList1.map((item, index) => (
                 <SettingWrapper
                   key={index}
                   title={item.title}
                   icon={item.icon}
+                  handlePress={item.handlePress}
                 />
               ))
             }
           </View>
-          <View className='p-3 mt-8 bg-[#f6f5f5] rounded-xl'>
+          <View className='py-1 mt-5 rounded-xl'>
             {
               profileItemList2.map((item, index) => (
                 <SettingWrapper
                   key={index}
                   title={item.title}
                   icon={item.icon}
+                  handlePress={item.handlePress}
                 />
               ))
             }
           </View>
-          <View className='p-3 mt-8 bg-[#f6f5f5] rounded-xl'>
+          <View className='py-1 mt-5 rounded-xl'>
             {
               profileItemList3.map((item, index) => (
                 <SettingWrapper
                   key={index}
                   title={item.title}
                   icon={item.icon}
+                  handlePress={item.handlePress}
                 />
               ))
             }
           </View>
-          <View className='p-1 px-3 mt-8 bg-[#f6f5f5] rounded-xl mb-5'>
+          <View className='py-1 mt-5 rounded-xl mb-10'>
             <SettingWrapper
               icon={<MaterialCommunityIcons name="logout" size={24} color="#FB4A" />}
               title='Log Out'
@@ -108,5 +120,7 @@ const Profile = () => {
     </SafeAreaView>
   )
 }
+
+// f6f5f5
 
 export default Profile

@@ -1,5 +1,6 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, Pressable } from 'react-native'
 import icons from '@/constants/icons'
+import { router } from 'expo-router'
 
 const CustomHeader = () => {
   return (
@@ -20,7 +21,7 @@ const CustomHeader = () => {
         </View>
       </View>
       {/* cart */}
-      <View className='relative bg-black-200 p-4 rounded-full'>
+      <Pressable className='relative bg-black-200 p-4 rounded-full' onPress={() => router.push("/cart")}>
         <Image
           source={icons.bag}
           className='w-6 h-6'
@@ -29,7 +30,7 @@ const CustomHeader = () => {
         <View className='absolute bg-secondary w-7 h-7 rounded-full items-center justify-center right-1 -top-1'>
           <Text className='text-white font-SenBold text-[15px]'>2</Text>
         </View>
-      </View>
+      </Pressable>
     </View>
   )
 }

@@ -8,15 +8,7 @@ import { useState } from 'react';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { FoodListType } from '@/types/home';
 import CustomButton from '@/components/CustomButton';
-
-type ReviewType = {
-  id: number;
-  reviewerName: string;
-  reviewerId: number;
-  rating: number;
-  review: string;
-  date: Date | string;
-}
+import EachReview, { ReviewType } from '@/components/shared/EachReview';
 
 const FoodReviewList: ReviewType[] = [
   {
@@ -61,51 +53,6 @@ const FoodReviewList: ReviewType[] = [
   },
 ]
 
-const EachReview = ({ id, reviewerName, reviewerId, rating, review, date }: ReviewType) => {
-  const [viewMore, setViewMore] = useState(false);
-
-
-  return (
-    <View className='bg-gray-50 border-[1px] border-red-400 p-3 mb-2 rounded-xl'>
-      <View className='flex-row justify-between'>
-        <View className='flex-row items-center'>
-          <Image
-            source={images.profile2}
-            className='w-12 h-12 rounded-full mr-2'
-            resizeMode='contain'
-          />
-          <View>
-            <Text className='text-[16px] font-SenSemibold tracking-tighter'>{reviewerName}</Text>
-            <Text className='text-gray-100'>#{reviewerId}</Text>
-          </View>
-        </View>
-        <View className='flex-row pt-1'>
-          <Image
-            source={icons.star}
-            className='w-5 h-5 mr-1'
-            resizeMode='contain'
-            tintColor="#FF7622"
-          />
-          <Text className='font-SenMedium text-[16px]'>{rating}</Text>
-        </View>
-      </View>
-      <View className='py-3 transition-all'>
-        <Text className='text-[16px] font-SenMedium tracking-tighter transition'>{!viewMore ? `${review.slice(0, 80)}...` : review}</Text>
-      </View>
-      <View className={`flex-row ${review.length <= 80 ? "justify-end" : "justify-between"} items-center`}>
-        {
-          review.length > 80 && (
-            <Pressable className='flex-row items-center' onPress={() => setViewMore(!viewMore)}>
-              <Text className='text-gray-200 mr-[2px] font-SenRegular text-[16px]'>View More</Text>
-              <AntDesign name={!viewMore ? "right" : "up"} size={12} color="black" />
-            </Pressable>
-          )
-        }
-        <Text className='font-SenRegular text-gray-100'>{typeof date === 'string' ? date : date.toLocaleDateString()}</Text>
-      </View>
-    </View>
-  )
-}
 
 const FoodDetail = () => {
   const params = useLocalSearchParams();
@@ -117,14 +64,16 @@ const FoodDetail = () => {
 
   return (
     <>
-      <SafeAreaView className='bg-primary h-full px-3'>
+      <SafeAreaView className='bg-primary h-full px-1'>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View>
-            <Image
-              source={images.detailImagePlaceholder}
-              className='w-full h-[350px]'
-              resizeMode='contain'
-            />
+            <View className='pt-10'>
+              <Image
+                source={images.burger}
+                className='w-full h-[170px]'
+                resizeMode='contain'
+              />
+            </View>
             <View className='absolute flex-row py-6 justify-between w-full px-4 items-center'>
               <Pressable
                 className='p-3 bg-primary rounded-full'

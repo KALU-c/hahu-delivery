@@ -15,11 +15,11 @@ export type ReviewType = {
 }
 
 const EachReview = ({ id, reviewerName, reviewerId, rating, review, date }: ReviewType) => {
-  const [viewMore, setViewMore] = useState(false);
+  const [viewMore, setViewMore] = useState(true);
 
 
   return (
-    <View className='bg-gray-50 border-[1px] border-red-400 p-3 mb-2 rounded-xl'>
+    <View className='bg-gray-50 400 p-3 mb-2 rounded-xl'>
       <View className='flex-row justify-between'>
         <View className='flex-row items-center'>
           <Image
@@ -45,9 +45,9 @@ const EachReview = ({ id, reviewerName, reviewerId, rating, review, date }: Revi
       <View className='py-3 transition-all'>
         <Text className='text-[16px] font-SenMedium tracking-tighter transition'>{!viewMore ? `${review.slice(0, 92)}...` : review}</Text>
       </View>
-      <View className={`flex-row ${review.length <= 93 ? "justify-end" : "justify-between"} items-center`}>
+      <View className={`flex-row ${review.length <= 92 ? "justify-end" : "justify-between"} items-center w-full`}>
         {
-          review.length > 80 && (
+          review.length > 92 && (
             <Pressable className='flex-row items-center' onPress={() => setViewMore(!viewMore)}>
               <Text className='text-gray-200 mr-[2px] font-SenRegular text-[16px]'>View More</Text>
               <AntDesign name={!viewMore ? "right" : "up"} size={12} color="black" />

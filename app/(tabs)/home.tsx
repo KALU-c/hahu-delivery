@@ -138,7 +138,7 @@ const Home = () => {
                       name={item.name}
                       restaurant={item.restaurant}
                       price={item.price}
-                      handlePress={() => router.push({ pathname: "/details/food/[id]", params: { item: JSON.stringify(item) } })}
+                      handlePress={() => router.push({ pathname: "/details/food/[id]", params: { id: item.id, item: JSON.stringify(item) } })}
                     />
                   )}
                   className='flex-1 w-full py-2'
@@ -162,7 +162,7 @@ const Home = () => {
               <View className='mb-10'>
                 {
                   restaurants.map(item => (
-                    <Pressable key={item.id} onPress={() => router.push({ pathname: "/details/restaurant/[id]", params: { item: JSON.stringify(item) } })}>
+                    <Pressable key={item.id} onPress={() => router.push({ pathname: "/details/restaurant/[id]", params: { id: item.id, item: JSON.stringify(item) } })}>
                       <EachRestaurant
                         id={item.id}
                         name={item.name}

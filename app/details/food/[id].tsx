@@ -1,7 +1,7 @@
 import icons from '@/constants/icons';
 import images from '@/constants/images';
 import { router, useLocalSearchParams } from 'expo-router'
-import { View, Text, ScrollView, Image, Pressable, StatusBar, StyleSheet } from 'react-native'
+import { View, Text, ScrollView, Image, Pressable, StatusBar } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useState } from 'react';
@@ -66,7 +66,7 @@ const EachReview = ({ id, reviewerName, reviewerId, rating, review, date }: Revi
 
 
   return (
-    <View className='bg-gray-50 border-[1px] border-red-400 p-3 mb-2 mt-4 rounded-xl'>
+    <View className='bg-gray-50 border-[1px] border-red-400 p-3 mb-2 rounded-xl'>
       <View className='flex-row justify-between'>
         <View className='flex-row items-center'>
           <Image
@@ -118,7 +118,7 @@ const FoodDetail = () => {
   return (
     <>
       <SafeAreaView className='bg-primary h-full px-3'>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <View>
             <Image
               source={images.detailImagePlaceholder}
@@ -213,7 +213,7 @@ const FoodDetail = () => {
               </View>
             </View>
             <View>
-              <View className='flex-row justify-between'>
+              <View className='flex-row justify-between mb-4 mx-2'>
                 <Text className='text-[20px] font-SenMedium text-green-600'>Reviews</Text>
                 <Text className='text-[20px] font-SenMedium text-gray-100'>13</Text>
               </View>
@@ -253,10 +253,5 @@ const FoodDetail = () => {
   )
 }
 
-// const styles = StyleSheet.create({
-//   text: {
-//     brea
-//   },
-// })
 
 export default FoodDetail

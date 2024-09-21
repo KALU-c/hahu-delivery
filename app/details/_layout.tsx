@@ -5,7 +5,7 @@ const DetailsLayout = () => {
   return (
     <Stack>
       <Stack.Screen name='food' options={{ headerShown: false }} />
-      <Stack.Screen name='restaurant' />
+      <Stack.Screen name='restaurant' options={{ headerShown: false }} />
     </Stack>
   )
 }

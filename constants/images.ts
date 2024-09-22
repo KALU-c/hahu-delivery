@@ -7,6 +7,7 @@ import profile from "@/assets/images/pp.avif"
 import profile2 from "@/assets/images/profile2.jpg"
 import detailImagePlaceholder from "@/assets/images/detailsImagePlaceholder.png"
 import restaurant2 from "@/assets/images/restaurant2.jpg"
+import emptyCart from "@/assets/images/emptyCart.png"
 
 export default {
   imagePlaceholder,
@@ -17,5 +18,6 @@ export default {
   profile,
   profile2,
   detailImagePlaceholder,
-  restaurant2
+  restaurant2,
+  emptyCart
 }

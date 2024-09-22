@@ -9,6 +9,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import { FoodListType } from '@/types/home';
 import CustomButton from '@/components/CustomButton';
 import EachReview, { ReviewType } from '@/components/shared/EachReview';
+import { useCartStore } from '@/context/useCartStore';
 
 const FoodReviewList: ReviewType[] = [
   {
@@ -58,6 +59,8 @@ const FoodDetail = () => {
   const params = useLocalSearchParams();
   const item = JSON.parse(params.item as string) as FoodListType;
   const { id, name, price, restaurant, deliveryFee, cookTime, rating, reviews } = item;
+
+  const { addToCart, removeFromCart } = useCartStore();
 
   const [liked, setLiked] = useState(false);
   const [selectedSize, setSelectedSize] = useState(0);
@@ -188,6 +191,7 @@ const FoodDetail = () => {
             title='ADD TO CART'
             otherStyle='rounded-md h-[40px] px-2 w-[48%]'
             textStyle='text-[15px]'
+            handlePress={() => addToCart(item)}
           />
           <CustomButton
             title='ADD TO FAVORITE'

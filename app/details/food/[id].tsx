@@ -4,12 +4,13 @@ import { router, useLocalSearchParams } from 'expo-router'
 import { View, Text, ScrollView, Image, Pressable, StatusBar } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { FoodListType } from '@/types/home';
 import CustomButton from '@/components/CustomButton';
 import EachReview, { ReviewType } from '@/components/shared/EachReview';
 import { useCartStore } from '@/context/useCartStore';
+import { useGlobalStore } from '@/context/useGlobalStore';
 
 const FoodReviewList: ReviewType[] = [
   {
@@ -56,14 +57,37 @@ const FoodReviewList: ReviewType[] = [
 
 
 const FoodDetail = () => {
+  const [isInTheCart, setIsInTheCart] = useState(false);
+  const [isInFavorite, setIsFavorite] = useState(false);
+
   const params = useLocalSearchParams();
   const item = JSON.parse(params.item as string) as FoodListType;
-  const { id, name, price, restaurant, deliveryFee, cookTime, rating, reviews } = item;
+  const { id, name, price, restaurant, deliveryFee, cookTime, rating } = item;
 
-  const { addToCart, removeFromCart } = useCartStore();
+  // store
+  const { addToCart, removeFromCart, cartItem } = useCartStore();
+  const { addToFavorite, removeFromFavorite, favorite } = useGlobalStore();
 
   const [liked, setLiked] = useState(false);
   const [selectedSize, setSelectedSize] = useState(0);
+
+  useEffect(() => {
+    const itemExist = cartItem.find(item => item.id === id);
+    if (itemExist) {
+      setIsInTheCart(true);
+    } else {
+      setIsInTheCart(false);
+    }
+  }, [cartItem]);
+
+  useEffect(() => {
+    const itemExist = favorite.find(item => item.id === id);
+    if (itemExist) {
+      setIsFavorite(true);
+    } else {
+      setIsFavorite(false);
+    }
+  }, [favorite]);
 
   return (
     <>
@@ -186,19 +210,23 @@ const FoodDetail = () => {
           </View>
 
         </ScrollView>
-        <View className='h-[60px] flex-row items-center justify-between'>
+        <View className='h-[60px] flex-row items-center justify-between px-2'>
           <CustomButton
-            title='ADD TO CART'
-            otherStyle='rounded-md h-[40px] px-2 w-[48%]'
+            title={`${isInTheCart ? "REMOVE FROM CART" : "ADD TO CART"}`}
+            otherStyle='rounded-md h-[45px] px-2 w-[48%]'
             textStyle='text-[15px]'
-            handlePress={() => addToCart(item)}
+            handlePress={() => {
+              isInTheCart ? removeFromCart(item.id) : addToCart(item)
+            }}
           />
           <CustomButton
-            title='ADD TO FAVORITE'
-            otherStyle='rounded-md h-[40px] px-2 w-[48%] bg-transparent border-[1px] border-secondary'
+            title={`${isInFavorite ? 'REMOVE FAVORITE' : 'ADD TO FAVORITE'}`}
+            otherStyle='rounded-md h-[45px] px-2 w-[48%] bg-transparent border-[1px] border-secondary'
             textStyle='text-[15px] text-secondary'
+            handlePress={() => {
+              isInFavorite ? removeFromFavorite(item.id) : addToFavorite(item)
+            }}
           />
-          {/* <Text className='text-[15px] font-SenRegular'>INGREDIENTS</Text> */}
         </View>
       </SafeAreaView>
       <StatusBar backgroundColor="#fff" barStyle="dark-content" />

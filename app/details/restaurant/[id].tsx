@@ -9,6 +9,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import Entypo from '@expo/vector-icons/Entypo';
 import EachReview, { ReviewType } from '@/components/shared/EachReview';
 import EachAvailableFood, { AvailableFoodType } from '@/components/shared/EachAvailableFood';
+import { useCartStore } from '@/context/useCartStore';
 
 type RestaurantDetailType = {
   id: number;
@@ -75,14 +76,12 @@ const availableFoodList: AvailableFoodType[] = [
 
 
 const RestaurantDetail = () => {
-  // const [selectedFoodType, setSelectedFoodType] = useState("");
   const params = useLocalSearchParams();
-
   const item = JSON.parse(params.item as string) as RestaurantDetailType;
-
   const { name, address, cookTime, deliveryFee, rating } = item;
-
   const [liked, setLiked] = useState(false);
+
+  const { addToCart, removeFromCart } = useCartStore();
 
   return (
     <>
@@ -92,7 +91,6 @@ const RestaurantDetail = () => {
             <Image
               source={images.restaurant2}
               className='w-full h-[270px] rounded-xl'
-            // resizeMode='contain'
             />
             <View className='absolute flex-row py-6 justify-between w-full px-4 items-center'>
               <Pressable
@@ -179,6 +177,8 @@ const RestaurantDetail = () => {
                       name={item.name}
                       restaurant={item.restaurant}
                       price={item.price}
+                      handleAddToCart={() => addToCart(item)}
+                      handleRemoveFromCart={() => removeFromCart(item.id)}
                     />
                   </Pressable>
                 ))

@@ -8,6 +8,7 @@ import EachRestaurant from '@/components/home/EachRestaurant'
 import { router } from 'expo-router'
 import { EachRestaurantType } from '@/types/restaurant'
 import { FoodListType } from '@/types/home'
+import { useEffect, useState } from 'react'
 
 const foodList: FoodListType[] = [
   { id: 1, name: "Burger", restaurant: "The Burger Joint", price: 8.99, rating: 4.2, deliveryFee: 2.4, cookTime: 30, reviews: [{ id: 1, review: "Great Burger", date: "20-10-2024", reviewerName: "Jane Doe" }] },

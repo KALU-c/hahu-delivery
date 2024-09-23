@@ -1,6 +1,8 @@
 import images from "@/constants/images";
+import { useCartStore } from "@/context/useCartStore";
 import Entypo from "@expo/vector-icons/Entypo";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { useEffect, useState } from "react";
+import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 
 export type AvailableFoodType = {
   id: number;
@@ -10,9 +12,26 @@ export type AvailableFoodType = {
   rating: number;
   deliveryFee: number;
   cookTime: number;
+  handleAddToCart?: () => void;
+  handleRemoveFromCart?: () => void;
 }
 
-const EachAvailableFood = ({ name, restaurant, price }: Partial<AvailableFoodType>) => {
+const EachAvailableFood = ({ name, restaurant, price, handleAddToCart, handleRemoveFromCart, id }: Partial<AvailableFoodType>) => {
+  const [itemInCart, setItemInCart] = useState(false);
+
+  const { cartItem } = useCartStore();
+
+  useEffect(() => {
+    const itemExist = cartItem.find(item => item.id === id);
+    console.log(itemExist);
+
+    if (itemExist) {
+      setItemInCart(true);
+    } else {
+      setItemInCart(false);
+    }
+
+  }, [cartItem])
 
   return (
     <View className='justify-center p-4 rounded-xl bg-primary mb-4' style={styles.boxShadow}>
@@ -25,9 +44,13 @@ const EachAvailableFood = ({ name, restaurant, price }: Partial<AvailableFoodTyp
       <Text className='font-SenRegular text-[15px] mt-[3px] text-gray-200'>{restaurant}</Text>
       <View className='flex-row justify-between items-center mt-3 px-1'>
         <Text className='text-[17px] font-SenSemibold'>${price}</Text>
-        <View className='p-2 bg-secondary rounded-full'>
-          <Entypo name="plus" size={16} color="white" />
-        </View>
+        <Pressable className='p-2 bg-secondary rounded-full' onPress={itemInCart ? handleRemoveFromCart : handleAddToCart}>
+          {
+            itemInCart
+              ? <Entypo name="minus" size={16} color="white" />
+              : <Entypo name="plus" size={16} color="white" />
+          }
+        </Pressable>
       </View>
     </View>
   )

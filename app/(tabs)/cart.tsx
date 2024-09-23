@@ -45,7 +45,7 @@ const Cart = () => {
               <View className='h-[10vh] bg-gray-50 rounded-t-xl px-4 border-gray-100 border-[1px] flex-row justify-between items-center'>
                 <View className='flex-row gap-1 items-center'>
                   <Text className='text-[18px] font-SenRegular text-gray-100'>TOTAL: </Text>
-                  <Text className='text-[25px] font-SenMedium'>${totalPrice}</Text>
+                  <Text className='text-[25px] font-SenMedium mr-2'>${totalPrice.toFixed(2)}</Text>
                 </View>
                 <CustomButton
                   title='PLACE ORDER'

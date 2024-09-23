@@ -6,10 +6,10 @@ const EmptyCart = () => {
     <View className='h-full justify-center'>
       <Image
         source={images.emptyCart}
-        className='w-full mt-16'
+        className='w-[250px] mt-20 self-center'
         resizeMode='contain'
       />
-      <Text className='font-SenSemibold text-[30px] text-gray-200 text-center -mt-20'>Cart is Empty</Text>
+      <Text className='font-SenSemibold text-[25px] text-gray-200 text-center -mt-32'>Cart is Empty</Text>
     </View>
   )
 }

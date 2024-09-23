@@ -1,8 +1,12 @@
 import { View, Text, Image, Pressable } from 'react-native'
 import icons from '@/constants/icons'
 import { router } from 'expo-router'
+import { useCartStore } from '@/context/useCartStore'
 
 const CustomHeader = () => {
+  const { cartItem } = useCartStore();
+
+
   return (
     <View className='flex-row justify-between pt-4'>
       <View className='flex-row gap-3 items-center'>
@@ -27,9 +31,13 @@ const CustomHeader = () => {
           className='w-6 h-6'
           resizeMode='contain'
         />
-        <View className='absolute bg-secondary w-7 h-7 rounded-full items-center justify-center right-1 -top-1'>
-          <Text className='text-white font-SenBold text-[15px]'>2</Text>
-        </View>
+        {
+          cartItem.length !== 0 && (
+            <View className='absolute bg-secondary w-7 h-7 rounded-full items-center justify-center right-1 -top-1'>
+              <Text className='text-white font-SenBold text-[15px]'>{cartItem.length}</Text>
+            </View>
+          )
+        }
       </Pressable>
     </View>
   )

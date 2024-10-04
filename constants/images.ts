@@ -8,6 +8,7 @@ import profile2 from "@/assets/images/profile2.jpg"
 import detailImagePlaceholder from "@/assets/images/detailsImagePlaceholder.png"
 import restaurant2 from "@/assets/images/restaurant2.jpg"
 import emptyCart from "@/assets/images/emptyCart.png"
+import friedChicken from "@/assets/images/fried-chicken.jpg"
 
 // Landing page images
 import landing1 from "@/assets/images/landing-1.png"
@@ -30,4 +31,5 @@ export default {
   landing2,
   landing3,
   landing4,
+  friedChicken
 }

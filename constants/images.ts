@@ -9,6 +9,12 @@ import detailImagePlaceholder from "@/assets/images/detailsImagePlaceholder.png"
 import restaurant2 from "@/assets/images/restaurant2.jpg"
 import emptyCart from "@/assets/images/emptyCart.png"
 
+// Landing page images
+import landing1 from "@/assets/images/landing-1.png"
+import landing2 from "@/assets/images/landing-2.png"
+import landing3 from "@/assets/images/landing-3.png"
+import landing4 from "@/assets/images/landing-4.png"
+
 export default {
   imagePlaceholder,
   foodImagePlaceholder,
@@ -19,5 +25,9 @@ export default {
   profile2,
   detailImagePlaceholder,
   restaurant2,
-  emptyCart
+  emptyCart,
+  landing1,
+  landing2,
+  landing3,
+  landing4,
 }

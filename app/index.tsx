@@ -32,37 +32,37 @@ const index = () => {
       <PagerView
         key={currentPage} // Force re-render with new page
         ref={pagerViewRef}
-        className='h-[60vh]'
+        className='h-[70vh]'
         initialPage={currentPage}
         onPageSelected={e => setCurrentPage(e.nativeEvent.position)}
       >
         <View key="1" className='items-center justify-center px-6 gap-3'>
-          <Image source={images.imagePlaceholder} className='w-[300px] h-[350px]' />
+          <Image source={images.landing1} className='w-[300px] h-[350px]' />
           <Text className='font-SenExtraBold text-[24px]'>All your favoritesF</Text>
           <Text className='font-SenRegular text-[16px] text-center'>Get all your loved foods in one once place,
             you just place the order we do the rest</Text>
         </View>
         <View key="2" className='items-center justify-center px-6 gap-3'>
-          <Image source={images.imagePlaceholder} className='w-[300px] h-[350px]' />
+          <Image source={images.landing2} className='w-[300px] h-[350px]' />
           <Text className='font-SenExtraBold text-[24px]'>All your favoritesF</Text>
           <Text className='font-SenRegular text-[16px] text-center'>Get all your loved foods in one once place,
             you just place the order we do the rest</Text>
         </View>
         <View key="3" className='items-center justify-center px-6 gap-3'>
-          <Image source={images.imagePlaceholder} className='w-[300px] h-[350px]' />
+          <Image source={images.landing3} className='w-[300px] h-[350px]' />
           <Text className='font-SenExtraBold text-[24px]'>All your favoritesF</Text>
           <Text className='font-SenRegular text-[16px] text-center'>Get all your loved foods in one once place,
             you just place the order we do the rest</Text>
         </View>
         <View key="4" className='items-center justify-center px-6 gap-3'>
-          <Image source={images.imagePlaceholder} className='w-[300px] h-[350px]' />
+          <Image source={images.landing4} className='w-[300px] h-[350px]' />
           <Text className='font-SenExtraBold text-[24px]'>All your favoritesF</Text>
           <Text className='font-SenRegular text-[16px] text-center'>Get all your loved foods in one once place,
             you just place the order we do the rest</Text>
         </View>
       </PagerView>
       <PageIndicator count={4} current={currentPage} color='red' className='h-[2vh] self-center mb-10' />
-      <View className='h-[20vh] justify-end px-5 transition-all'>
+      <View className='justify-end px-5 transition-all'>
         <CustomButton
           title={`${currentPage == 3 ? "GET STARTED" : "NEXT"}`}
           otherStyle='mb-4'

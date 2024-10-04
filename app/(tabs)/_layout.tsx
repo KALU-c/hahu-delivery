@@ -1,7 +1,6 @@
 import { Tabs } from 'expo-router'
 import { View, Text, Image } from 'react-native'
 import icons from '@/constants/icons'
-import CartContextProvider from '@/context/CartContext';
 import { TabIconProps } from '@/types/layout';
 
 const TabIcon = ({ name, icon, color, focused }: TabIconProps) => {
@@ -38,11 +37,11 @@ const TabsLayout = () => {
           <TabIcon color={color} focused={focused} name='Home' icon={icons.home} />
         )
       }} />
-      <Tabs.Screen name='explore' options={{
+      <Tabs.Screen name='(explore)' options={{
         headerShown: false,
         title: "Cafe",
         tabBarIcon: ({ color, focused }) => (
-          <TabIcon color={color} focused={focused} name='Cafe' icon={icons.explore} />
+          <TabIcon color={color} focused={focused} name='Explore' icon={icons.explore} />
         )
       }} />
       <Tabs.Screen name='cart' options={{

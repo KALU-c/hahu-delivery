@@ -1,4 +1,3 @@
-import { View } from 'react-native'
 import {
   createMaterialTopTabNavigator,
   MaterialTopTabNavigationOptions,
@@ -6,7 +5,6 @@ import {
 } from "@react-navigation/material-top-tabs";
 import { withLayoutContext } from 'expo-router';
 import { ParamListBase, TabNavigationState } from '@react-navigation/native';
-import Header from '@/components/order/Header';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const { Navigator } = createMaterialTopTabNavigator();
@@ -18,19 +16,10 @@ export const MaterialTopTabs = withLayoutContext<
   MaterialTopTabNavigationEventMap
 >(Navigator);
 
-type TopTabType = {
-  name: string;
-  color: string;
-  focused: boolean;
-}
 
 const TabLayout = () => {
   return (
     <SafeAreaView className='bg-primary h-full'>
-      {/* <ScrollView> */}
-      {/* <View className='px-4 pb-3 pt-5'>
-        <Header />
-      </View> */}
       <MaterialTopTabs screenOptions={{
         tabBarStyle: {
           borderBottomWidth: 1,
@@ -47,7 +36,6 @@ const TabLayout = () => {
         />
         <MaterialTopTabs.Screen name='history' options={{ title: "History" }} />
       </MaterialTopTabs>
-      {/* </ScrollView> */}
     </SafeAreaView>
   )
 }
